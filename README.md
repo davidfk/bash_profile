@@ -1,8 +1,10 @@
-## unix
-vim
+## installation
+```./setup.sh```
+
+vim plugins used:
 -  pathogen: https://github.com/tpope/vim-pathogen
 -  nerdtree: https://github.com/scrooloose/nerdtree
--  vim-trailing-whitespace: https://github.com/bronson/vim-trailing-whitespace
+-  vim-better-whitespace: https://github.com/ntpeters/vim-better-whitespace
 
 also get:
 - tmux
