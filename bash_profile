@@ -1,5 +1,10 @@
 #!/bin/bash
 
+set -o vi
+
+# editor
+export EDITOR=vim
+
 # color (for mac terminal)
 export CLICOLOR=1
 
@@ -11,8 +16,6 @@ alias h='history'
 # dir traversal
 alias ..='cd ..'
 alias ...='cd ../..'
-alias .3='cd ../../..'
-alias .4='cd ../../../..'
 
 # fileops
 alias rm='rm -i'
@@ -21,8 +24,5 @@ alias mv='mv -i'
 
 alias ll='ls -ahlv'
 
-# editor
-export EDITOR=vim
-
 # conda
-export PATH=/Users/dkamm/anaconda3/bin:$PATH
+export PATH=$HOME/anaconda3/bin:$PATH

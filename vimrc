@@ -5,7 +5,7 @@ call pathogen#infect()
 """filetype plugin indent on
 
 set nocompatible    " no backwards compatability with vi
-set modelines=0     " prevents security exploits lol
+set modelines=0     " prevents security exploits
 
 """ Color schemes
 highlight BadWhitespace ctermbg=red guibg=red
@@ -32,12 +32,12 @@ match BadWhitespace /\t/    " highlight tabs
 " highlight ColorColumn ctermbg=7
 " match ErrorMsg '\%>80v.\+'
 
-""" Custom commands
-command Nt NERDTreeToggle
-command Fw FixWhitespace
-
 """ For NERDTree
 let NERDTreeShowHidden=1    " shows hidden files
+
+""" Custom commands
+command Nt NERDTreeToggle
+command Fw StripWhitespace
 
 """ Testing nav
 let mapleader = ","
@@ -66,5 +66,4 @@ augroup resCur
   autocmd!
   autocmd BufWinEnter * call ResCur()
 augroup END
-
 
