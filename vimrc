@@ -1,8 +1,8 @@
 """filetype off
 call pathogen#infect()
 
-""" File formatting
-"""filetype plugin indent on
+""" File type detection
+filetype plugin indent on
 
 set nocompatible    " no backwards compatability with vi
 set modelines=0     " prevents security exploits
@@ -11,29 +11,24 @@ set modelines=0     " prevents security exploits
 highlight BadWhitespace ctermbg=red guibg=red
 
 """ Control options
-set smartindent     " auto indentation
-set incsearch       " incremental search
-set tabstop=4       " default to 4
-set shiftwidth=4    " default to 4
-set softtabstop=4   " number of columns for TAB
-set expandtab       " expand tabs to spaces
+syntax on                    " syntax highlighting
+set incsearch                " incremental search
+set number                   " absolute line numbers
+set ruler                    " character count
+set hlsearch                 " highlight search results
+set fileformat=unix          " unix newlines
+match BadWhitespace /\s\+$/  " highlight trailing whitespace
 
-syntax on                   " syntax highlighting
-set number                  " absolute line numbers
-set ruler                   " character count
-set hlsearch                " highlight search results
-set showtabline=4           " always show tabline
-set fileformat=unix         " unix newlines
-" set colorcolumn=80        " highlight col 80
-match BadWhitespace /\s\+$/ " highlight trailing whitespace
-match BadWhitespace /\t/    " highlight tabs
-
-" highlights col 80
-" highlight ColorColumn ctermbg=7
-" match ErrorMsg '\%>80v.\+'
+""" Tab options (defaults)
+set tabstop=2                " # cols a tab counts for
+set shiftwidth=2             " # cols text indented with (<< and >>)
+set softtabstop=2            " # cols vim uses when hit tab in insert mode
+set expandtab                " insert spaces when hit tab in insert mode
+set smartindent              " smart indent assuming text is c-program
+set autoindent               " use indent from last line (smartindent better with this on)
 
 """ For NERDTree
-let NERDTreeShowHidden=1    " shows hidden files
+let NERDTreeShowHidden=1     " shows hidden files
 
 """ Custom commands
 command Nt NERDTreeToggle
