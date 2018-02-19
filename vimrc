@@ -31,7 +31,7 @@ set autoindent               " use indent from last line (smartindent better wit
 let NERDTreeShowHidden=1     " shows hidden files
 
 """ Custom commands
-command Nt NERDTreeToggle
+command Nt NERDTreeToggle %:p:h
 command Fw StripWhitespace
 
 """ Testing nav
@@ -62,3 +62,5 @@ augroup resCur
   autocmd BufWinEnter * call ResCur()
 augroup END
 
+""" working directory same as file editting
+set autochdir
