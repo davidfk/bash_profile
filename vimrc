@@ -1,66 +1,72 @@
-"""filetype off
-call pathogen#infect()
+""" Plug
+call plug#begin('~/.vim/plugged')
 
-""" File type detection
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+" Tags
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'majutsushi/tagbar'
+
+" Git
+Plug 'tpope/vim-fugitive'
+
+" Lint / Fmt
+Plug 'w0rp/ale'
+
+" Tmux
+Plug 'christoomey/vim-tmux-navigator'
+
+call plug#end()
+
 filetype plugin indent on
 
-set nocompatible    " no backwards compatability with vi
-set modelines=0     " prevents security exploits
+" Leader
+let mapleader = ' '
+let maplocalleader = ' '
 
-""" Color schemes
-highlight BadWhitespace ctermbg=red guibg=red
-
-""" Control options
+""" Vim options
 syntax on                    " syntax highlighting
+
+set nocompatible             " no backwards compatability with vi
+set modelines=0              " prevents security exploits
 set incsearch                " incremental search
 set number                   " absolute line numbers
 set ruler                    " character count
 set hlsearch                 " highlight search results
 set fileformat=unix          " unix newlines
-match BadWhitespace /\s\+$/  " highlight trailing whitespace
-
-""" Tab options (defaults)
 set tabstop=2                " # cols a tab counts for
 set shiftwidth=2             " # cols text indented with (<< and >>)
 set softtabstop=2            " # cols vim uses when hit tab in insert mode
 set expandtab                " insert spaces when hit tab in insert mode
 set smartindent              " smart indent assuming text is c-program
 set autoindent               " use indent from last line (smartindent better with this on)
+set ignorecase               " case matching
+set smartcase                " case matching
+set wrap                     " wrap text
+set encoding=utf-8
 
-""" For NERDTree
-let NERDTreeShowHidden=1     " shows hidden files
+" Navigation
+nnoremap <tab> <c-w>w
+nnoremap <S-tab> <c-w>W
 
-""" Custom commands
-command Nt NERDTreeToggle %:p:h
-command Fw StripWhitespace
+" Tagbar
+noremap <F12> :TagbarToggle<cr>
 
-""" Testing nav
-let mapleader = ","
-map <C-j> <C-W>h
-map <C-k> <C-W>l
-map <leader>r :NERDTreeFind<cr>
+" NERDTree
+let g:NERDTreeShowHidden=1     " shows hidden files
+noremap <F10> :NERDTreeToggle<cr>
 
-""" Vim Info
-" Tell vim to remember certain things when we exit
-"  '10  :  marks will be remembered for up to 10 previously edited files
-"  "100 :  will save up to 100 lines for each register
-"  :20  :  up to 20 lines of command-line history will be remembered
-"  %    :  saves and restores the buffer list
-"  n... :  where to save the viminfo files
-set viminfo='10,\"100,:20,%,n~/.viminfo
+" ALE
+let g:ale_fix_on_save=1
 
-""" Restore cursor
-function! ResCur()
-  if line("'\"") <= line("$")
-    normal! g`"
-    return 1
-  endif
-endfunction
+" Fzf
+let g:fzf_layout = { 'up': '~40%' }
+nnoremap <silent> <C-p> :Files<CR>
+nnoremap <silent> <leader>fw :Ag <C-R><C-W><CR>
+nnoremap <silent> <leader>ag :Ag <C-R>
+nnoremap <silent> <leader>bf :Buffers<CR>
+nnoremap <silent> <leader>tg :Tags<CR>
 
-augroup resCur
-  autocmd!
-  autocmd BufWinEnter * call ResCur()
-augroup END
-
-""" working directory same as file editting
-set autochdir

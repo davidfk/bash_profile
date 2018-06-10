@@ -12,7 +12,7 @@ function override_git_prompt_colors() {
   GIT_PROMPT_COMMAND_OK="${Green}✔"
   GIT_PROMPT_COMMAND_FAIL="${Red}X"
 
-  GIT_PROMPT_START_USER="${LightGrey}${Time12a}${ResetColor} ${LightBlue}\\u${ResetColor}@${LightBlue}\\h${ResetColor}:${Yellow}${PathShort}${ResetColor}"
+  GIT_PROMPT_START_USER="${Cyan}${Time12a}${ResetColor} ${LightBlue}\\u${ResetColor}@${LightBlue}\\h${ResetColor}:${Yellow}${PathShort}${ResetColor}"
   GIT_PROMPT_START_ROOT="${GIT_PROMPT_START_USER}"
   GIT_PROMPT_END_USER="$ "
   GIT_PROMPT_END_ROOT="${GIT_PROMPT_END_USER}"

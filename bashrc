@@ -30,6 +30,9 @@ alias ll='ls --color=auto -ahlv'
 # conda
 export PATH=$HOME/anaconda3/bin:$PATH
 
+# gcloud
+export PATH=$HOME/google-cloud-sdk/bin:$PATH
+
 # git prompt
 GIT_PROMPT_ONLY_IN_REPO=0
 GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
