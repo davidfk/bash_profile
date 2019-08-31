@@ -25,10 +25,18 @@ alias rm='rm -i'
 alias cp='cp -i'
 alias mv='mv -i'
 
-alias ll='ls --color=auto -ahlv'
+case $OSTYPE in
+  darwin*)
+    alias ll='ls -ahlv'
+    ;;
+  linux*)
+    alias ll='ls --color=auto -ahlv'
+    ;;
+esac
 
-# conda
-export PATH=$HOME/anaconda3/bin:$PATH
+# for nerdtree
+export LC_ALL=en_US.utf-8
+export LANG="$LC_ALL"
 
 # gcloud
 export PATH=$HOME/google-cloud-sdk/bin:$PATH
@@ -37,3 +45,9 @@ export PATH=$HOME/google-cloud-sdk/bin:$PATH
 GIT_PROMPT_ONLY_IN_REPO=0
 GIT_PROMPT_THEME_FILE=$HOME/.git-prompt-colors.sh
 source $HOME/.bash-git-prompt/gitprompt.sh
+
+# python
+source $HOME/virtualenvs/dev/bin/activate
+
+# fzf
+export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -l -g ""'

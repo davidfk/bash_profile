@@ -19,6 +19,9 @@ Plug 'w0rp/ale'
 " Tmux
 Plug 'christoomey/vim-tmux-navigator'
 
+" Typescript
+Plug 'leafgarland/typescript-vim'
+
 call plug#end()
 
 filetype plugin indent on
@@ -33,7 +36,8 @@ syntax on                    " syntax highlighting
 set nocompatible             " no backwards compatability with vi
 set modelines=0              " prevents security exploits
 set incsearch                " incremental search
-set number                   " absolute line numbers
+set number                   " hybrid line numbers
+set relativenumber           " hybrid line numbers
 set ruler                    " character count
 set hlsearch                 " highlight search results
 set fileformat=unix          " unix newlines
@@ -69,4 +73,7 @@ nnoremap <silent> <leader>fw :Ag <C-R><C-W><CR>
 nnoremap <silent> <leader>ag :Ag <C-R>
 nnoremap <silent> <leader>bf :Buffers<CR>
 nnoremap <silent> <leader>tg :Tags<CR>
+
+" set filetypes as typescript.jsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
